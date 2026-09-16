@@ -1,0 +1,73 @@
+OpenClaw Runbook 1: paste-ready prompts
+Review-ready, not yet released. Planned first release: 0.1.0.
+
+Each prompt below matches its file in the prompts directory, in the intended order.
+Give your agent the runbook before the first prompt: runbook/oc-runbook-1-before-you-trust-openclaw.md
+The runbook address inside the prompts says RUNBOOK_RELEASE_URL_PENDING until the package is released.
+If it still says that, your agent will stop and ask you for the local runbook file above.
+
+=== Prompt 1 of 8: Audit Your OpenClaw Setup ===
+
+**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `RUNBOOK_RELEASE_URL_PENDING`, especially **Section 2, Read-only setup assessment**, before acting. If the address still says `RUNBOOK_RELEASE_URL_PENDING`, stop and ask me to provide the included local runbook file. Compare that section with my installation. This prompt authorizes read-only inspection only.
+
+Help me understand my OpenClaw setup before I rely on it. Run the Section 2 assessment commands and report my installed version, gateway status, default or custom state/config/workspace paths, service model, and the backup commands available on this build. Describe sensitive material without printing values.
+
+Tell me what you checked, what you found, what still needs attention, and the next safe step. Do not change files, configuration, services, access controls, or scheduled jobs.
+
+=== Prompt 2 of 8: Map What Your Setup Depends On ===
+
+**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `RUNBOOK_RELEASE_URL_PENDING`, especially **Section 2, Read-only setup assessment**, before acting. If the address still says `RUNBOOK_RELEASE_URL_PENDING`, stop and ask me to provide the included local runbook file. This prompt authorizes read-only inspection only.
+
+Map the state directory, active configuration path, workspace, credentials location if identifiable, and gateway service for this installation. Note any custom `OPENCLAW_CONFIG_PATH` or non-default location that changes the usual assumptions. Give me a short explanation of why each item matters to recovery, without printing secret values or private file contents.
+
+Finish with what you checked, what you found, and the next safe step.
+
+=== Prompt 3 of 8: Confirm Independent Host Access ===
+
+**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `RUNBOOK_RELEASE_URL_PENDING`, especially **Section 3, Confirm independent host access**, before acting. If the address still says `RUNBOOK_RELEASE_URL_PENDING`, stop and ask me to provide the included local runbook file. Do not create accounts, change passwords, open ports, or configure remote access.
+
+Help me prove that I can reach the host without going through OpenClaw. Tell me how to open a direct terminal on the host, which account owns the installation, and the one safe command I should run there to confirm the state directory exists. Mark this step complete only after I confirm that I ran it in a direct host terminal.
+
+If I cannot reach the host directly, explain the separate follow-up I need. Report what you checked and the next safe step.
+
+=== Prompt 4 of 8: Create a Verified Backup ===
+
+**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `RUNBOOK_RELEASE_URL_PENDING`, especially **Sections 4 and 5, Choose a backup method and destination** and **Create and verify the supported archive**, before acting. If the address still says `RUNBOOK_RELEASE_URL_PENDING`, stop and ask me to provide the included local runbook file.
+
+First, run `openclaw backup --help` and tell me whether this build provides both `create` and `verify`. Then help me choose a private output directory, a private off-host destination, and whether the workspace should be included. Explain the choice and wait for my explicit approval before creating an archive.
+
+After I approve, use the supported archive command from the runbook, verify the resulting archive again, and report its filename, size, verification result, and privacy-safe destination description. Do not print credentials or create a manual backup unless I separately approve that new plan.
+
+=== Prompt 5 of 8: Move the Backup Off-Host ===
+
+**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `RUNBOOK_RELEASE_URL_PENDING`, especially **Sections 4 and 5, Choose a backup method and destination** and **Create and verify the supported archive**, before acting. If the address still says `RUNBOOK_RELEASE_URL_PENDING`, stop and ask me to provide the included local runbook file.
+
+Help me choose a private off-host destination for my verified archive. Explain practical choices such as a private cloud folder, external drive, NAS, or another computer I control. Ask which one I want, explain the transfer and confirmation steps, and wait for my approval before uploading or copying anything.
+
+Once I approve, help me confirm the archive reached that private destination. Report the method, confirmation, and next safe step without printing a public link or secret values.
+
+=== Prompt 6 of 8: Build Your Recovery Information Sheet ===
+
+**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `RUNBOOK_RELEASE_URL_PENDING`, especially **Section 6, Make the recovery information sheet**, before acting. If the address still says `RUNBOOK_RELEASE_URL_PENDING`, stop and ask me to provide the included local runbook file.
+
+Use the runbook’s recovery-sheet format to help me create a short private reference with the host, owner account, important setup locations, direct-host access route, backup method and destination, verification command, second route for help, and next maintenance date.
+
+Ask for only the information you need. Keep secret values out of chat and the sheet. Give me plain text I can save in a private place outside `~/.openclaw`.
+
+=== Prompt 7 of 8: Verify a Backup Safely ===
+
+**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `RUNBOOK_RELEASE_URL_PENDING`, especially **Section 7, Verify the archive without touching the live install**, before acting. If the address still says `RUNBOOK_RELEASE_URL_PENDING`, stop and ask me to provide the included local runbook file.
+
+Help me confirm that my archive exists, passes `openclaw backup verify <archive-path>`, and has a sensible contents listing. If I ask for a stronger extraction check, explain what will be written, wait for my approval, create a scratch directory, a temporary empty directory used for a safe extraction test, with `mktemp -d`, and extract only there. Clean up only that exact scratch directory after I confirm the result.
+
+Report what you checked, what you found, and the next safe step. Do not restore over the live installation.
+
+=== Prompt 8 of 8: Record Your Maintenance Plan ===
+
+**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `RUNBOOK_RELEASE_URL_PENDING`, especially **Sections 8 and 9, Explain limits and set maintenance** and **Completion criteria and stop conditions**, before acting. If the address still says `RUNBOOK_RELEASE_URL_PENDING`, stop and ask me to provide the included local runbook file.
+
+Help me write a short maintenance plan. It should say what I have in place, any practical limits I should remember, my next maintenance date about a month from now, and what I’ll do then: create a fresh backup, verify it, confirm the off-host copy, re-check direct host access, and update my recovery sheet if the setup changed.
+
+Offer to set a reminder if my agent supports it, but wait for my approval before creating one. Keep the result short, clear, and free of secret values.
+
+=== End of prompts ===

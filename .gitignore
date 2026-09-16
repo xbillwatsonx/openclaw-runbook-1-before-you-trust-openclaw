@@ -1,0 +1,14 @@
+# OpenClaw Runbook 1 public package
+
+# OS and editor artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp
+.vscode/
+.idea/
+
+# Local scratch and log output
+*.log
+scratch/
