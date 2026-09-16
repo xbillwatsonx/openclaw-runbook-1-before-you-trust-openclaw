@@ -3,7 +3,7 @@
 **Status:** Review-ready, not yet released. Planned first release: 0.1.0.
 **Scope:** Linux and WSL, single operator, self-hosted OpenClaw.
 
-OpenClaw Runbook 1 helps you establish four separate capabilities before OpenClaw becomes important to your daily life: a private verified backup, independent access to the host, a deliberate rollback path, and a practical recovery plan. It is written for a technically comfortable self-hosted operator working with an OpenClaw agent, and the procedure was technically validated against a live OpenClaw installation before this package was assembled.
+OpenClaw Runbook 1 helps you establish four separate capabilities before OpenClaw becomes important to your daily life: a private verified backup, independent access to the host, a deliberate rollback path, and a practical recovery plan. It is written for a technically comfortable self-hosted operator working with an OpenClaw agent. The procedure was technically validated in a clean, disposable WSL2 installation running OpenClaw 2026.9.4 before this package was assembled.
 
 ## Quick start
 

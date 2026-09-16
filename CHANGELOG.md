@@ -10,6 +10,6 @@ Initial public package for OpenClaw Runbook 1: Before You Trust OpenClaw.
 - Reader-facing tutorial, quick-start card, and glossary.
 - Eight paste-ready prompts, individually in the prompts directory and together in prompts.txt.
 - Blank recovery information sheet template.
-- Procedure technically validated against a live OpenClaw installation before packaging: all eight controlled checks passed.
+- Procedure technically validated in a clean, disposable WSL2 installation running OpenClaw 2026.9.4 before packaging: all eight controlled checks passed.
 - Known pre-release blocker: the runbook address inside the prompts and tutorial says RUNBOOK_RELEASE_URL_PENDING. Replace it with the published runbook URL at release time. The included local runbook file is the usable fallback until then.
 - Licensed under Creative Commons Attribution 4.0 International.
