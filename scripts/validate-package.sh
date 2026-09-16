@@ -276,7 +276,7 @@ done
 # 15. Whitespace: no trailing whitespace, every file ends with a newline.
 ws=0
 for f in "${EXPECTED_FILES[@]}"; do
-  if grep -qn '[[:blank:]]+$' "$f"; then
+  if grep -qnE '[[:blank:]]+$' "$f"; then
     fail "$f: trailing whitespace"
     ws=1
   fi

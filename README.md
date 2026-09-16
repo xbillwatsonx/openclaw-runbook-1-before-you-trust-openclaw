@@ -21,7 +21,7 @@ The permanent version 0.1.0 runbook address used by the prompts and tutorial is:
 | File | What it is |
 | --- | --- |
 | [README.md](README.md) | This overview: quick start, file map, and release status. |
-| [CHANGELOG.md](CHANGELOG.md) | Package history and the planned 0.1.0 first release. |
+| [CHANGELOG.md](CHANGELOG.md) | Package history and the 0.1.0 first release. |
 | [LICENSE](LICENSE) | Creative Commons Attribution 4.0 International. |
 | [.gitignore](.gitignore) | Ignores OS and editor artifacts for package maintainers. |
 | [justfile](justfile) | Common commands for agents and maintainers. |
