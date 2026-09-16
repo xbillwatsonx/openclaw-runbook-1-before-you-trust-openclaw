@@ -4,7 +4,7 @@ Copy this into your OpenClaw chat. It helps you understand the setup before maki
 
 ---
 
-**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `RUNBOOK_RELEASE_URL_PENDING`, especially **Section 2, Read-only setup assessment**, before acting. If the address still says `RUNBOOK_RELEASE_URL_PENDING`, stop and ask me to provide the included local runbook file. Compare that section with my installation. This prompt authorizes read-only inspection only.
+**For my agent:** Read **Before You Trust OpenClaw: Backups, Access, and a Recovery Plan** at `https://raw.githubusercontent.com/xbillwatsonx/openclaw-runbook-1-before-you-trust-openclaw/v0.1.0/runbook/oc-runbook-1-before-you-trust-openclaw.md`, especially **Section 2, Read-only setup assessment**, before acting. Compare that section with my installation. This prompt authorizes read-only inspection only.
 
 Help me understand my OpenClaw setup before I rely on it. Run the Section 2 assessment commands and report my installed version, gateway status, default or custom state/config/workspace paths, service model, and the backup commands available on this build. Describe sensitive material without printing values.
 

@@ -3,13 +3,13 @@
 **A practical companion to OpenClaw Runbook 1: Before You Trust OpenClaw**
 
 **Edition:** Linux and WSL, first edition
-**Status:** Review-ready companion, not yet released.
+**Status:** Released companion, version 0.1.0.
 
 If OpenClaw stopped working today, you’d want three things close at hand: a way into the computer that runs it, a private backup, and a simple record of what belongs where. This guide explains how those pieces fit together and how to use the matching runbook with your agent.
 
 ## Need a simpler explanation?
 
-If any part of the runbook feels too technical, you do not have to figure it out alone. Give the released runbook link to your AI agent and use this prompt. While the release URL is pending, give the agent the included local runbook file instead: `../runbook/oc-runbook-1-before-you-trust-openclaw.md`.
+If any part of the runbook feels too technical, you do not have to figure it out alone. Give the released runbook link to your AI agent and use this prompt. The included local copy is also available at `../runbook/oc-runbook-1-before-you-trust-openclaw.md`.
 
 > Read this runbook before doing anything. Explain it to me in plain, non-technical language, one section at a time. Define unfamiliar terms and use simple examples when they help. Check that I understand before continuing. Do not run commands, create files, or change my system unless I explicitly approve the action.
 
@@ -72,11 +72,11 @@ Set a maintenance date about a month out. On that date, make a fresh archive, ve
 
 ## How to use the prompts
 
-When the released runbook is available, open it first, then copy one prompt at a time into your OpenClaw chat. Each prompt tells your agent which runbook section to read before it acts, and it tells you what that step is for. Let the agent finish and report the result before moving to the next prompt.
+Open the released runbook first, then copy one prompt at a time into your OpenClaw chat. Each prompt tells your agent which runbook section to read before it acts, and it tells you what that step is for. Let the agent finish and report the result before moving to the next prompt.
 
-While the release URL is pending, use the included local runbook file: `../runbook/oc-runbook-1-before-you-trust-openclaw.md`.
+The package also includes a local runbook file: `../runbook/oc-runbook-1-before-you-trust-openclaw.md`.
 
-**Runbook address:** `RUNBOOK_RELEASE_URL_PENDING`
+**Runbook address:** <https://raw.githubusercontent.com/xbillwatsonx/openclaw-runbook-1-before-you-trust-openclaw/v0.1.0/runbook/oc-runbook-1-before-you-trust-openclaw.md>
 
 | Prompt | What it helps you do | Runbook section |
 | --- | --- | --- |

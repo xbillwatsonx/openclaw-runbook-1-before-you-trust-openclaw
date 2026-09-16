@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Deterministic validator for the OpenClaw Runbook 1 public package.
-# Review-ready pre-release package, planned first release 0.1.0.
+# Released package, version 0.1.0.
 #
 # Checks the package manifest, license integrity, product naming, privacy
 # hygiene, Markdown link resolution, prompts.txt integrity, the pre-release
@@ -186,7 +186,7 @@ else
   fail "prompts.txt first line must be the OpenClaw Runbook 1 header"
   order_ok=0
 fi
-grep -q 'Review-ready, not yet released' prompts.txt || { fail "prompts.txt is missing the review-ready status line"; order_ok=0; }
+grep -q '^Released, version 0\.1\.0\.$' prompts.txt || { fail "prompts.txt is missing the released version line"; order_ok=0; }
 delim_count="$(grep -c '^=== Prompt ' prompts.txt || true)"
 delim_count="${delim_count:-0}"
 if [ "$delim_count" -ne 8 ]; then
@@ -225,9 +225,8 @@ else
   fail "README first line must be '# OpenClaw Runbook 1: Before You Trust OpenClaw'"
   readme_ok=0
 fi
-grep -q 'Review-ready' README.md || { fail "README must state the review-ready status"; readme_ok=0; }
-grep -q 'not yet released' README.md || { fail "README must state it is not yet released"; readme_ok=0; }
-grep -q '0\.1\.0' README.md || { fail "README must mention the planned 0.1.0 release"; readme_ok=0; }
+grep -q '\*\*Status:\*\* Released, version 0\.1\.0\.' README.md || { fail "README must state the released 0.1.0 status"; readme_ok=0; }
+grep -q '0\.1\.0' README.md || { fail "README must mention release 0.1.0"; readme_ok=0; }
 grep -qi '^## Quick start' README.md || { fail "README must have a Quick start section"; readme_ok=0; }
 map_ok=1
 for f in "${EXPECTED_FILES[@]}"; do
@@ -239,15 +238,13 @@ done
 # 11. CHANGELOG requirements.
 cl_ok=1
 grep -q 'OpenClaw Runbook 1' CHANGELOG.md || { fail "CHANGELOG must name the product as OpenClaw Runbook 1"; cl_ok=0; }
-grep -q '0\.1\.0' CHANGELOG.md || { fail "CHANGELOG must mention the planned 0.1.0 release"; cl_ok=0; }
-grep -q 'RUNBOOK_RELEASE_URL_PENDING' CHANGELOG.md || { fail "CHANGELOG must document the RUNBOOK_RELEASE_URL_PENDING release blocker"; cl_ok=0; }
-grep -q 'not yet released' CHANGELOG.md || { fail "CHANGELOG must state it is not yet released"; cl_ok=0; }
+grep -q '^## 0\.1\.0 - 2026-09-16$' CHANGELOG.md || { fail "CHANGELOG must record the 0.1.0 release date"; cl_ok=0; }
 [ "$cl_ok" -eq 1 ] && pass "CHANGELOG requirements verified"
 
 # 12. No stale draft status strings.
 stale=0
 for f in "${PROSE_FILES[@]}"; do
-  for s in 'not yet technically validated' 'Approved build draft' 'Draft companion' 'still a draft'; do
+  for s in 'not yet technically validated' 'Approved build draft' 'Draft companion' 'still a draft' 'Review-ready' 'not yet released' 'RUNBOOK_RELEASE_URL_PENDING'; do
     if grep -qF "$s" "$f"; then
       fail "$f: stale status string '$s'"
       stale=1
@@ -290,34 +287,19 @@ for f in "${EXPECTED_FILES[@]}"; do
 done
 [ "$ws" -eq 0 ] && pass "no trailing whitespace; all files end with a newline"
 
-# 16. Pre-release placeholder and local-file fallback handling.
-fallback_ok=1
+# 16. Released URL coverage.
+RELEASE_URL="https://raw.githubusercontent.com/xbillwatsonx/openclaw-runbook-1-before-you-trust-openclaw/v0.1.0/runbook/oc-runbook-1-before-you-trust-openclaw.md"
+url_ok=1
 for pf in "${PROMPT_FILES[@]}"; do
-  grep -qF 'included local runbook file' "$pf" || { fail "$pf: missing the local runbook file fallback"; fallback_ok=0; }
+  grep -qF "$RELEASE_URL" "$pf" || { fail "$pf: missing the immutable v0.1.0 runbook URL"; url_ok=0; }
 done
-grep -qF '../runbook/oc-runbook-1-before-you-trust-openclaw.md' tutorial/before-you-trust-openclaw-tutorial.md || { fail "tutorial: missing the local runbook file fallback"; fallback_ok=0; }
-[ "$fallback_ok" -eq 1 ] && pass "local runbook file fallback present in every prompt and the tutorial"
-
-pending_prompts=0
-for pf in "${PROMPT_FILES[@]}"; do
-  if grep -q 'RUNBOOK_RELEASE_URL_PENDING' "$pf"; then
-    pending_prompts=$((pending_prompts + 1))
-  fi
-done
-if [ "$pending_prompts" -ne 0 ] && [ "$pending_prompts" -ne 8 ]; then
-  fail "inconsistent RUNBOOK_RELEASE_URL_PENDING coverage: $pending_prompts of 8 prompts carry the placeholder"
+grep -qF "$RELEASE_URL" tutorial/before-you-trust-openclaw-tutorial.md || { fail "tutorial: missing the immutable v0.1.0 runbook URL"; url_ok=0; }
+grep -qF "$RELEASE_URL" prompts.txt || { fail "prompts.txt: missing the immutable v0.1.0 runbook URL"; url_ok=0; }
+if grep -R -q 'RUNBOOK_RELEASE_URL_PENDING' -- "${PROSE_FILES[@]}"; then
+  fail "release placeholder remains in package prose"
+  url_ok=0
 fi
-pending_total=0
-for f in "${PROSE_FILES[@]}"; do
-  n="$(grep -c 'RUNBOOK_RELEASE_URL_PENDING' "$f" || true)"
-  n="${n:-0}"
-  pending_total=$((pending_total + n))
-done
-if [ "$pending_total" -gt 0 ]; then
-  note "RUNBOOK_RELEASE_URL_PENDING appears $pending_total times. This is the only expected release blocker. Replace it with the published runbook URL at release time."
-else
-  note "RUNBOOK_RELEASE_URL_PENDING not found. If this is the release build, confirm the status lines were updated for release."
-fi
+[ "$url_ok" -eq 1 ] && pass "immutable v0.1.0 runbook URL present; no release placeholder remains"
 
 # Summary.
 printf '\n'

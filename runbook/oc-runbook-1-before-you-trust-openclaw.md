@@ -2,7 +2,7 @@
 
 **Series:** AgentHelpSite OpenClaw Beginner Runbook Series
 **Edition:** Linux and WSL only, first edition
-**Status:** Review-ready, technically validated, not yet released
+**Status:** Released, technically validated, version 0.1.0
 **Audience:** An OpenClaw agent working with a technically comfortable self-hosted operator
 
 ## Agent instructions

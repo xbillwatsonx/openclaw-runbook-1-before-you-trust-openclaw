@@ -1,5 +1,5 @@
 # OpenClaw Runbook 1 public package.
-# Status: review-ready, not yet released. Planned first release: 0.1.0.
+# Status: released, version 0.1.0.
 
 # Show all commands
 help:
@@ -12,6 +12,10 @@ menu:
 # Run the deterministic package validator
 validate:
     bash scripts/validate-package.sh
+
+# Build the version 0.1.0 ZIP and checksum beside the package folder
+release-archive:
+    @slug="$$(basename "$$PWD")"; cd ..; rm -f "$$slug-v0.1.0.zip" "$$slug-v0.1.0.zip.sha256"; zip -rq "$$slug-v0.1.0.zip" "$$slug" -x "$$slug/.git/*"; sha256sum "$$slug-v0.1.0.zip" > "$$slug-v0.1.0.zip.sha256"
 
 # Agent preflight checks
 agent-preflight:

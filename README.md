@@ -1,6 +1,6 @@
 # OpenClaw Runbook 1: Before You Trust OpenClaw
 
-**Status:** Review-ready, not yet released. Planned first release: 0.1.0.
+**Status:** Released, version 0.1.0.
 **Scope:** Linux and WSL, single operator, self-hosted OpenClaw.
 
 OpenClaw Runbook 1 helps you establish four separate capabilities before OpenClaw becomes important to your daily life: a private verified backup, independent access to the host, a deliberate rollback path, and a practical recovery plan. It is written for a technically comfortable self-hosted operator working with an OpenClaw agent. The procedure was technically validated in a clean, disposable WSL2 installation running OpenClaw 2026.9.4 before this package was assembled.
@@ -12,7 +12,9 @@ OpenClaw Runbook 1 helps you establish four separate capabilities before OpenCla
 3. Copy the eight prompts into your OpenClaw chat one at a time, in order, from the [prompts directory](prompts/) or all together in [prompts.txt](prompts.txt).
 4. Finish with your recovery information sheet. Fill in [RECOVERY-SHEET-TEMPLATE.md](RECOVERY-SHEET-TEMPLATE.md) and keep the completed sheet outside OpenClaw.
 
-The runbook address inside the prompts and tutorial says `RUNBOOK_RELEASE_URL_PENDING` until the package is released. Until then, each prompt tells your agent to stop and ask you for the included local runbook file from step 1, so the package is fully usable before release.
+The permanent version 0.1.0 runbook address used by the prompts and tutorial is:
+
+<https://raw.githubusercontent.com/xbillwatsonx/openclaw-runbook-1-before-you-trust-openclaw/v0.1.0/runbook/oc-runbook-1-before-you-trust-openclaw.md>
 
 ## Complete file map
 
@@ -56,7 +58,9 @@ Complete all eight before calling the recovery-readiness session finished.
 
 ## Release status
 
-This is the review-ready pre-release package for version 0.1.0, and it has not been released yet. The only expected release blocker: the runbook address inside the prompts and tutorial still says `RUNBOOK_RELEASE_URL_PENDING`. At release time, replace that placeholder with the published runbook URL everywhere it appears. Do not invent or guess the URL before then; the included local runbook file is the usable fallback.
+Version 0.1.0 was released on 2026-09-16. The prompts and tutorial use the immutable tag-specific runbook address:
+
+<https://raw.githubusercontent.com/xbillwatsonx/openclaw-runbook-1-before-you-trust-openclaw/v0.1.0/runbook/oc-runbook-1-before-you-trust-openclaw.md>
 
 ## Commands for agents and maintainers
 
