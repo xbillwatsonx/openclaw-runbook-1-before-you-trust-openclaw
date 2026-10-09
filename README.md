@@ -62,6 +62,16 @@ Version 0.1.0 was released on 2026-09-16. The prompts and tutorial use the immut
 
 <https://raw.githubusercontent.com/xbillwatsonx/openclaw-runbook-1-before-you-trust-openclaw/v0.1.0/runbook/oc-runbook-1-before-you-trust-openclaw.md>
 
+## Related OpenClaw resources
+
+These three resources form a practical path through recovery readiness, deliberate model routing, and safe day-to-day maintenance:
+
+1. [Before You Trust OpenClaw](https://github.com/xbillwatsonx/openclaw-runbook-1-before-you-trust-openclaw): establish verified backups, independent host access, rollback, and recovery first.
+2. [The OpenClaw Model Routing Guide + Companion Runbook](https://github.com/xbillwatsonx/openclaw-model-routing-guide): design, test, verify, and roll back model routing with evidence.
+3. [Build an OpenClaw Setup You Can Understand and Repair](https://github.com/xbillwatsonx/openclaw-runbook-2-understandable-repairable-setup): map the system, record a known-good baseline, and practice one bounded safe change.
+
+Start with the resource that matches your immediate need, or follow them in this order.
+
 ## Commands for agents and maintainers
 
 From the package root:
